@@ -13,6 +13,13 @@ dependencies = [
 dev = [
     "textual-dev>=1.0.0",
 ]
+llm = [
+    "httpx>=0.25.0",
+]
+all = [
+    "textual-dev>=1.0.0",
+    "httpx>=0.25.0",
+]
 
 [project.scripts]
 dendrite = "dendrite.app:main"
