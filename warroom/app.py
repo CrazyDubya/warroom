@@ -325,6 +325,8 @@ class WarRoomApp(App):
     async def _handle_command(self, cmd: str) -> None:
         """Handle slash commands."""
         parts = cmd.split(maxsplit=1)
+        if not parts:
+            return
         action = parts[0].lower()
         args = parts[1] if len(parts) > 1 else ""
 
