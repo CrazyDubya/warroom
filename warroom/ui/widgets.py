@@ -124,6 +124,12 @@ class WitnessGrid(Container):
         super().__init__(**kwargs)
         self.focus = focus
 
+    async def update_focus(self, focus: Focus | None) -> None:
+        """Rebuild existing child widgets when the displayed focus changes."""
+        self.focus = focus
+        await self.remove_children()
+        await self.mount(*self.compose())
+
     def compose(self) -> ComposeResult:
         if not self.focus:
             yield Static("No focus selected", classes="dim")
@@ -191,6 +197,12 @@ class EvidenceBoard(Container):
     def __init__(self, focus: Focus | None = None, **kwargs):
         super().__init__(**kwargs)
         self.focus = focus
+
+    async def update_focus(self, focus: Focus | None) -> None:
+        """Rebuild existing child widgets when the displayed focus changes."""
+        self.focus = focus
+        await self.remove_children()
+        await self.mount(*self.compose())
 
     def compose(self) -> ComposeResult:
         yield Static("══════════════ EVIDENCE BOARD ══════════════", classes="title")
