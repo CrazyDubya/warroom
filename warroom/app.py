@@ -261,11 +261,11 @@ class WarRoomApp(App):
 
         # Update witness grid
         witness_grid = self.query_one("#witness-grid", WitnessGrid)
-        witness_grid.focus = focus
+        witness_grid.call_later(witness_grid.update_focus, focus)
 
         # Update evidence board
         evidence_board = self.query_one("#evidence-board", EvidenceBoard)
-        evidence_board.focus = focus
+        evidence_board.call_later(evidence_board.update_focus, focus)
 
         # Update whisper bar
         whisper_bar = self.query_one("#whisper-bar", WhisperBar)
